@@ -1,0 +1,17 @@
+### Send POST request with json body
+POST https://tiny-url-y6tk94xd24gc.deno.dev
+#POST http://localhost:3000/
+Content-Type: application/json
+
+{
+  "name": "bambee",
+  "url": "https://uptownhr.com/2"
+}
+
+### Send GET request
+GET http://localhost:3000/
+Content-Type: application/json
+
+### Send GET request
+GET http://localhost:3000/bambee
+Content-Type: application/json
