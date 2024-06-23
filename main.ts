@@ -1,13 +1,13 @@
-import { NestFactory } from '@nestjs/core';
-import { Module } from '@nestjs/common';
-import '@nestjs/platform-express';
-import {RedirectRepository} from "./repository.ts";
-import {RedirectController} from "./controller.ts";
+/// <reference no-default-lib="true" />
+/// <reference lib="dom" />
+/// <reference lib="dom.iterable" />
+/// <reference lib="dom.asynciterable" />
+/// <reference lib="deno.ns" />
 
-@Module({
-  providers: [RedirectRepository],
-  controllers: [RedirectController],
-})
-class AppModule {}
-const app = await NestFactory.create(AppModule);
-app.listen(3000);
+import "$std/dotenv/load.ts";
+
+import { start } from "$fresh/server.ts";
+import manifest from "./fresh.gen.ts";
+import config from "./fresh.config.ts";
+
+await start(manifest, config);

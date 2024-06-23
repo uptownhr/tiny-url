@@ -17,6 +17,7 @@ export class RedirectController {
 
   @Get('/')
   get(): Promise<RedirectDto[]> {
+    console.log(Deno.version.deno);
     return this.redirectRepo.list();
   }
 
