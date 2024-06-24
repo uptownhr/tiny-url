@@ -1,19 +1,50 @@
 {
+  "lock": false,
   "tasks": {
-    "dev": "deno run --unstable-kv --watch --allow-write --allow-read --allow-env --allow-net main.ts"
+    "check": "deno fmt --check && deno lint && deno check **/*.ts && deno check **/*.tsx",
+    "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable -A -",
+    "manifest": "deno task cli manifest $(pwd)",
+    "start": "deno run -A --watch=static/,routes/ --unstable-kv dev.ts",
+    "build": "deno run --unstable-kv -A dev.ts build",
+    "preview": "deno run -A main.ts",
+    "update": "deno run -A -r https://fresh.deno.dev/update ."
   },
+  "lint": {
+    "rules": {
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
+    }
+  },
+  "exclude": [
+    "**/_fresh/*"
+  ],
   "imports": {
-    "@nestjs/common": "npm:@nestjs/common@^10.3.9",
-    "@nestjs/core": "npm:@nestjs/core@^10.3.9",
-    "@nestjs/platform-express": "npm:@nestjs/platform-express@^10.3.9"
+    "$fresh/": "https://deno.land/x/fresh@1.6.8/",
+    "$std/": "https://deno.land/std@0.216.0/",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
+    "date-fns": "npm:date-fns@^3.6.0",
+    "preact": "https://esm.sh/preact@10.19.6",
+    "preact/": "https://esm.sh/preact@10.19.6/",
+    "slugify": "npm:slugify@^1.6.6",
+    "tailwindcss": "npm:tailwindcss@3.4.1",
+    "tailwindcss/": "npm:/tailwindcss@3.4.1/",
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
+    "forms": "npm:@tailwindcss/forms"
   },
   "compilerOptions": {
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "lib": [
+      "deno.unstable"
+    ],
     "strictPropertyInitialization": false
   },
+  "nodeModulesDir": true,
   "deploy": {
-    "project": "2504fa7f-e4d0-43aa-aa00-c809c6a616eb",
+    "project": "ee647a07-ea6b-4ad8-9e05-08961cc35d9a",
     "exclude": [
       "**/node_modules"
     ],
