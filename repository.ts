@@ -22,7 +22,7 @@ export class RedirectRepository {
 
     const created = await kv.set(id, url);
 
-    console.log("created", created);
+    console.log("created", created, id);
 
     const res = await kv.get<RedirectUrl>([...id]);
 
@@ -32,7 +32,7 @@ export class RedirectRepository {
 
     const parsed = this.parseId(res.key);
 
-    console.log('parsed', parsed)
+    console.log('parsed', parsed, res)
 
     return {
       url: res.value,
@@ -41,36 +41,41 @@ export class RedirectRepository {
   }
 
   async list(name?: string): Promise<RedirectModel[]> {
-    const search = [this.kvKey];
+    const search = [this.kvKey.toLowerCase()];
 
     if (name) {
       search.push(name.toLowerCase());
     }
 
+    console.log(search)
+
     const entries = kv.list<RedirectUrl>({ prefix: search });
+
     const result: RedirectModel[] = [];
 
     for await (const entry of entries) {
       const parsed = this.parseId(entry.key);
-      result.push({
+      result.unshift({
         url: entry.value,
         created: new Date(parsed.created)
       });
     }
 
+    console.log('result', result)
+
     return result;
   }
 
-  private createId(kvKey: string, name: string): [string, number, string] {
-    return [kvKey.toLowerCase(), Date.now(), name.toLowerCase()];
+  private createId(kvKey: string, name: string): [string, string, number] {
+    return [kvKey.toLowerCase(), name.toLowerCase(), Date.now()];
   }
 
   private parseId(id: KvKey): ParsedId {
     console.log(id)
     return {
       kvKey: id[0] as string,
-      created: id[1] as number,
-      name: id[2] as string,
+      name: id[1] as string,
+      created: id[2] as number,
     };
   }
 }
