@@ -22,7 +22,7 @@ export class RedirectRepository {
 
     const created = await kv.set(id, url);
 
-    console.log("created", created, id);
+    console.log("created", { id, created });
 
     const res = await kv.get<RedirectUrl>([...id]);
 
@@ -32,11 +32,9 @@ export class RedirectRepository {
 
     const parsed = this.parseId(res.key);
 
-    console.log('parsed', parsed, res)
-
     return {
       url: res.value,
-      created: new Date(parsed.created)
+      created: new Date(parsed.created),
     };
   }
 
@@ -47,7 +45,7 @@ export class RedirectRepository {
       search.push(name.toLowerCase());
     }
 
-    console.log(search)
+    console.log(search);
 
     const entries = kv.list<RedirectUrl>({ prefix: search });
 
@@ -57,11 +55,9 @@ export class RedirectRepository {
       const parsed = this.parseId(entry.key);
       result.unshift({
         url: entry.value,
-        created: new Date(parsed.created)
+        created: new Date(parsed.created),
       });
     }
-
-    console.log('result', result)
 
     return result;
   }
@@ -71,7 +67,6 @@ export class RedirectRepository {
   }
 
   private parseId(id: KvKey): ParsedId {
-    console.log(id)
     return {
       kvKey: id[0] as string,
       name: id[1] as string,

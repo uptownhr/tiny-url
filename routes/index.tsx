@@ -1,7 +1,6 @@
 import { RedirectRepository } from "../repository.ts";
-import { PageProps, HandlerContext, Handlers } from "$fresh/server.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
 
-const hostPrefix = Deno.env.get("hostPrefix") || "http://localhost:8000";
 const repo = new RedirectRepository();
 
 export interface CreateRedirect {
@@ -10,11 +9,8 @@ export interface CreateRedirect {
 }
 
 export const handler: Handlers = {
-
   async POST(req, ctx) {
     const form = await req.formData();
-
-    console.log("form", form);
 
     const data: CreateRedirect = {
       name: form.get("name")?.toString() || "",
@@ -22,19 +18,19 @@ export const handler: Handlers = {
     };
 
     try {
+      console.log("data", data);
       const testUrl = new URL(data.url);
-      console.log('testUrl', testUrl);
-    } catch( e) {
-      console.log('error', e);
-      return new Response('Invalid URL', {status: 400});
+      console.log("testUrl", testUrl);
+    } catch (e) {
+      console.log("error", e);
+      return new Response("Invalid URL", { status: 400 });
     }
-
 
     await repo.create(data);
 
     // Redirect user to thank you page.
     const headers = new Headers();
-    headers.set("location", `/?created=${hostPrefix}/${data.name}`);
+    headers.set("location", `/?created=${ctx.url.origin}/${data.name}`);
 
     return new Response(null, {
       headers,
@@ -58,12 +54,12 @@ export default function Home(props: PageProps) {
         />
         <h1 class="text-4xl font-bold">Welcome, create a URL</h1>
         <form method="POST">
-          <input type="text" name="name" placeholder="Name" className="my-2"/>
+          <input type="text" name="name" placeholder="Name" className="my-2" />
           {" "}
-          <br/>
-          <input type="text" name="url" placeholder="Url" className="my-2"/>
+          <br />
+          <input type="text" name="url" placeholder="Url" className="my-2" />
           {" "}
-          <br/>
+          <br />
           <button type="submit" className="my-2">Create</button>
         </form>
       </div>
@@ -71,12 +67,11 @@ export default function Home(props: PageProps) {
       <div class="bg-white ">
         {created && (
           <div>
-            <b>Created: </b>
+            <b>Created:</b>
             <a target="_blank" href={created}>{created}</a>
           </div>
         )}
       </div>
     </div>
-  )
-    ;
+  );
 }
