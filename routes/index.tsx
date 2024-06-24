@@ -26,11 +26,11 @@ export const handler: Handlers = {
       return new Response("Invalid URL", { status: 400 });
     }
 
-    await repo.create(data);
+    const response = await repo.create(data);
 
     // Redirect user to thank you page.
     const headers = new Headers();
-    headers.set("location", `/?created=${ctx.url.origin}/${data.name}`);
+    headers.set("location", `/?created=${ctx.url.origin}/${response.name}`);
 
     return new Response(null, {
       headers,

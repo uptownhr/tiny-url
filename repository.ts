@@ -1,5 +1,6 @@
 import { RedirectModel } from "./routes/[name].tsx";
 import { CreateRedirect } from "./routes/index.tsx";
+import slugify from "slugify";
 import KvKey = Deno.KvKey;
 
 const kv = await Deno.openKv();
@@ -34,6 +35,7 @@ export class RedirectRepository {
 
     return {
       url: res.value,
+      name: parsed.name,
       created: new Date(parsed.created),
     };
   }
@@ -63,7 +65,9 @@ export class RedirectRepository {
   }
 
   private createId(kvKey: string, name: string): [string, string, number] {
-    return [kvKey.toLowerCase(), name.toLowerCase(), Date.now()];
+    const slug = slugify(name, {lower: true});
+
+    return [kvKey.toLowerCase(), slug, Date.now()];
   }
 
   private parseId(id: KvKey): ParsedId {
