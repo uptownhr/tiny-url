@@ -1,16 +1,11 @@
-# Fresh project
+# Lov.io
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting
-Started" guide here: https://fresh.deno.dev/docs/getting-started
+Creating short, memorable, and human-readable links.
 
-### Usage
+## Demo
+Go to [https://lov.io](https://lov.io) to see the project in action.
 
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
+## Dev
 
-Then start the project:
-
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
+1. Clone the repository
+2. Run `deno task dev`
