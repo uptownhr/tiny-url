@@ -31,7 +31,8 @@
     "slugify": "npm:slugify@^1.6.6",
     "tailwindcss": "npm:tailwindcss@3.4.1",
     "tailwindcss/": "npm:/tailwindcss@3.4.1/",
-    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js"
+    "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
+    "forms": "npm:@tailwindcss/forms"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
