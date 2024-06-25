@@ -3,7 +3,7 @@
 Creating short, memorable, and human-readable links.
 
 ## Demo
-Go to [https://lov.io](https://lov.io) to see the project in action.
+Go to [https://zap.deno.dev](https://zap.deno.dev) to see the project in action.
 
 ## Dev
 
