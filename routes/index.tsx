@@ -122,6 +122,17 @@ export default function Home(props: PageProps) {
   return (
     <div>
       <Hero/>
+      {created && (
+      <section className="bg-white text-center p-10">
+        <div>
+          <h2 className="text-xl">Created</h2>
+          <code className="mt-4 p-4 block bg-[lightgrey]">
+            <a target="_blank" href={created}>{created}</a>
+          </code>
+        </div>
+      </section>
+      )}
+
       <section class="lg:px-8 sm:mx-auto sm:w-full sm:max-w-4xl pt-4">
         <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Stop ugly URLs that us humans can't remember or read
@@ -129,20 +140,9 @@ export default function Home(props: PageProps) {
         <img
           className="my-6"
           src="/tech-talk-short.svg"
-
-          alt="the Fresh logo: a sliced lemon dripping with juice"
+          alt="Human Readable URL"
         />
       </section>
-      <div className="bg-white text-center p-10">
-        {created && (
-          <div>
-            <h2 class="text-xl">Created</h2>
-            <code class="mt-4 p-4 block bg-[lightgrey]">
-              <a target="_blank" href={created}>{created}</a>
-            </code>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
