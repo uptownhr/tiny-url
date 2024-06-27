@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+    <!-- Background -->
+    <rect width="800" height="600" fill="#f0f0f0"/>
+
+    <!-- Projector screen -->
+    <rect x="100" y="50" width="600" height="400" fill="#ffffff" stroke="#000000" stroke-width="5"/>
+
+    <!-- Ugly URL on screen -->
+    <text x="120" y="150" font-family="monospace" font-size="24" fill="red">
+        Don't use: https://x.cc/x$8eqGsl
+    </text>
+
+    <text x="120" y="290" font-family="monospace" font-size="24" fill="green">
+        https://zap.deno.dev/human-readable-url
+    </text>
+
+    <!-- Presenter -->
+    <circle cx="400" cy="550" r="40" fill="#ffdbac"/> <!-- Head -->
+    <rect x="380" y="590" width="40" height="80" fill="#4a4a4a"/> <!-- Body -->
+    <line x1="380" y1="600" x2="340" y2="650" stroke="#4a4a4a" stroke-width="10"/> <!-- Left arm -->
+    <line x1="420" y1="600" x2="460" y2="560" stroke="#4a4a4a" stroke-width="10"/> <!-- Right arm pointing -->
+
+    <!-- Audience members (simplified) -->
+    <circle cx="200" cy="520" r="30" fill="#ffdbac"/>
+    <circle cx="600" cy="520" r="30" fill="#ffdbac"/>
+
+    <!-- Devices in audience hands -->
+    <rect x="185" y="560" width="30" height="40" fill="#c0c0c0"/>
+    <rect x="585" y="560" width="30" height="40" fill="#c0c0c0"/>
+</svg>
