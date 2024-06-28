@@ -124,15 +124,10 @@ export default function Home(props: PageProps) {
     <div>
       <Hero/>
       {created && (
-      <section className="bg-white text-center p-10">
-        <CopyText text={created} />
-        <div>
+        <section className="bg-white text-center p-10">
           <h2 className="text-xl">Created</h2>
-          <code className="mt-4 p-4 block bg-[lightgrey]">
-            <a target="_blank" href={created}>{created}</a>
-          </code>
-        </div>
-      </section>
+          <CopyText text={created}/>
+        </section>
       )}
 
       <section class="lg:px-8 sm:mx-auto sm:w-full sm:max-w-4xl pt-4">
