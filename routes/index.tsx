@@ -96,16 +96,16 @@ function Form() {
 
 function Hero() {
   return (
-    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#86efac] mb-4">
+    <div className="flex flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#86efac]">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm items-center flex flex-col">
         <img
           className="my-6"
           src="/logo.svg"
           width="128"
           height="128"
-          alt="the Fresh logo: a sliced lemon dripping with juice"
+          alt="Zap Logo"
         />
-        <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
           Create a memorable, human-readable link
         </h2>
       </div>
@@ -130,12 +130,12 @@ export default function Home(props: PageProps) {
         </section>
       )}
 
-      <section class="lg:px-8 sm:mx-auto sm:w-full sm:max-w-4xl pt-4">
-        <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+      <section class="lg:px-8 sm:mx-auto sm:w-full sm:max-w-4xl p-8 mt-4">
+        <h2 className="text-center text-4xl font-bold leading-9 tracking-tight text-gray-900">
           Stop ugly URLs that us humans can't remember or read
         </h2>
         <img
-          className="my-6"
+          className="my-12"
           src="/tech-talk-short.svg"
           alt="Human Readable URL"
         />
