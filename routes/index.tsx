@@ -1,5 +1,6 @@
 import { RedirectRepository } from "../repository.ts";
 import { Handlers, PageProps } from "$fresh/server.ts";
+import CopyText from "../islands/CopyText.tsx";
 
 const repo = new RedirectRepository();
 
@@ -124,6 +125,7 @@ export default function Home(props: PageProps) {
       <Hero/>
       {created && (
       <section className="bg-white text-center p-10">
+        <CopyText text={created} />
         <div>
           <h2 className="text-xl">Created</h2>
           <code className="mt-4 p-4 block bg-[lightgrey]">
